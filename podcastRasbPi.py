@@ -9,12 +9,12 @@ Created on Sat Mar 19 19:29:09 2016
 
 
 import Tkinter as tk
-import vlc
 
-class PodcastRabPi(Tkinter.Tk):
+
+class PodcastRabPi(tk.Tk):
 
     def __init__(self, root):
-        Tkinter.Tk.__init__(self, root)
+        tk.Tk.__init__(self, root)
         self.root = root
         self.initialize()
     
@@ -50,5 +50,6 @@ class PodcastRabPi(Tkinter.Tk):
 if __name__ == "__main__":
     app = PodcastRabPi(None)
     app.title('Podcast RabPi v0.1')
+    #p = Podcast()
+    
     app.mainloop()
-    app.quitApp()
