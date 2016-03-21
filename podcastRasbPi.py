@@ -1,15 +1,17 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
 Created on Sat Mar 19 19:29:09 2016
 
 @author: nico
 """
-#!/usr/bin/python
+
 
 
 
 import Tkinter as tk
-
+import pdb
+from PodcastsManager import PodcastsManager
 
 class PodcastRabPi(tk.Tk):
 
@@ -17,14 +19,14 @@ class PodcastRabPi(tk.Tk):
         tk.Tk.__init__(self, root)
         self.root = root
         self.initialize()
+        self.manager = PodcastsManager()
     
     def initialize(self):
         self.geometry('800x600')
         self.grid()
         
 
-
-        buttonForum = tk.Button(self, text='Forum', command=self.loadForum)
+        buttonForum = tk.Button(self, text='Forum', command=self.loadMedia)
         buttonForum.grid(padx=10, column=0, row=0, sticky='EW')
         buttonPause = tk.Button(self, text='Pause', command=self.pausePlaying)
         buttonPause.grid(padx=10, column=1, row=1, sticky='EW')
@@ -33,10 +35,10 @@ class PodcastRabPi(tk.Tk):
         buttonStop = tk.Button(self, text='Stop', command=self.stopPlaying)
         buttonStop.grid(padx=10, column=0, row=1, sticky='EW')
     
-    def loadForum(self):
+    def loadMedia(self):
         #play forum
-        self.p = vlc.MediaPlayer("./podcasts/Forum-La-1ère/20160319forum20160319standarddeveloppement-108ed5663d.mp3")
-        self.p.play()
+        self.manager.load('forum')
+        self.manager.play()
         
     def stopPlaying(self):
         self.p.stop()
@@ -50,6 +52,4 @@ class PodcastRabPi(tk.Tk):
 if __name__ == "__main__":
     app = PodcastRabPi(None)
     app.title('Podcast RabPi v0.1')
-    #p = Podcast()
-    
     app.mainloop()
