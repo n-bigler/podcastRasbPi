@@ -26,9 +26,9 @@ class PodcastsManager:
         self.titles['journal'] = 1
         self.media.append(Podcast("La librairie francophone",  DOWNLOAD_DIRECTORY + os.sep + 'LaLibrairiefrancophone-La1\?re'))
         self.titles['librairie'] = 2
-        
+
         self.vlcInstance = vlc.Instance()
-        self.player = self.vlcInstance.media_player_new()
+        self.player = self.vlcInstance.media_list_player_new()
 
 
         
@@ -44,3 +44,7 @@ class PodcastsManager:
 
     def stop(self):
         self.player.stop()
+        #self.player.release()
+
+    def next(self):
+        self.player.next()

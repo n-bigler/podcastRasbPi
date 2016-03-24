@@ -26,28 +26,48 @@ class PodcastRabPi(tk.Tk):
         self.grid()
         
 
-        buttonForum = tk.Button(self, text='Forum', command=self.loadMedia)
+        buttonForum = tk.Button(self, text='Forum', command=self.loadForum)
         buttonForum.grid(padx=10, column=0, row=0, sticky='EW')
+        buttonForum = tk.Button(self, text='Journal', command=self.loadJournal)
+        buttonForum.grid(padx=10, column=1, row=0, sticky='EW')
+        buttonForum = tk.Button(self, text='La librairie francophone', command=self.loadLibrairie)
+        buttonForum.grid(padx=10, column=2, row=0, sticky='EW')
+        buttonStop = tk.Button(self, text='Stop', command=self.stopPlaying)
+        buttonStop.grid(padx=10, column=0, row=1, sticky='EW')
         buttonPause = tk.Button(self, text='Pause', command=self.pausePlaying)
         buttonPause.grid(padx=10, column=1, row=1, sticky='EW')
         buttonPlay = tk.Button(self, text='Play', command=self.playPlaying)
         buttonPlay.grid(padx=10, column=2, row=1, sticky='EW')
-        buttonStop = tk.Button(self, text='Stop', command=self.stopPlaying)
-        buttonStop.grid(padx=10, column=0, row=1, sticky='EW')
+        buttonNext = tk.Button(self, text='Next', command=self.nextPlaying)
+        buttonNext.grid(padx=10, column=3, row=1, sticky='EW')
+
+
+    def loadForum(self):
+        self.loadMedia('forum')
+
+    def loadJournal(self):
+        self.loadMedia('journal')
+
+    def loadLibrairie(self):
+        self.loadMedia('librairie')
     
-    def loadMedia(self):
+    def loadMedia(self, name):
         #play forum
-        self.manager.load('forum')
+        self.manager.load(name)
         self.manager.play()
         
     def stopPlaying(self):
-        self.p.stop()
+        self.manager.stop()
         
     def pausePlaying(self):
-        self.p.pause()
+        self.manager.pause()
             
     def playPlaying(self):
-        self.p.play()
+        self.manager.play()
+
+    def nextPlaying(self):
+        self.manager.next()
+
 
 if __name__ == "__main__":
     app = PodcastRabPi(None)
