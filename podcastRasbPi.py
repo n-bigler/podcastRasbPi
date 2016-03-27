@@ -26,17 +26,34 @@ class PodcastRabPi(tk.Tk):
         self.grid()
         
 
-        buttonForum = tk.Button(self, text='Forum', command=self.loadForum)
+        forum_image = tk.PhotoImage(file='images/forum.gif')
+        buttonForum = tk.Button(self,width=128, height=128, image=forum_image,  command=self.loadForum)
+        buttonForum.image = forum_image
         buttonForum.grid(padx=10, column=0, row=0, sticky='EW')
-        buttonForum = tk.Button(self, text='Journal', command=self.loadJournal)
-        buttonForum.grid(padx=10, column=1, row=0, sticky='EW')
-        buttonForum = tk.Button(self, text='La librairie francophone', command=self.loadLibrairie)
-        buttonForum.grid(padx=10, column=2, row=0, sticky='EW')
-        buttonStop = tk.Button(self, text='Stop', command=self.stopPlaying)
+
+        journal_image = tk.PhotoImage(file='images/journal.gif')
+        buttonJournal = tk.Button(self,width=128, height=128, image=journal_image, command=self.loadJournal)
+        buttonJournal.image = journal_image
+        buttonJournal.grid(padx=10, column=1, row=0, sticky='EW')
+
+        librairie_image = tk.PhotoImage(file='images/librairie.gif')
+        buttonLibrairie = tk.Button(self, width=128, height=128, image=librairie_image, command=self.loadLibrairie)
+        buttonLibrairie.image = librairie_image
+        buttonLibrairie.grid(padx=10, column=2, row=0, sticky='EW')
+
+        stop_image = tk.PhotoImage(file='images/stop.gif')
+        buttonStop = tk.Button(self, width=128, height=128, image=stop_image, command=self.stopPlaying)
+        buttonStop.image = stop_image
         buttonStop.grid(padx=10, column=0, row=1, sticky='EW')
-        buttonPause = tk.Button(self, text='Pause', command=self.pausePlaying)
+
+        pause_image = tk.PhotoImage(file='images/pause.gif')
+        buttonPause = tk.Button(self, width=128, height=128, image=pause_image, command=self.pausePlaying)
+        buttonPause.image = pause_image
         buttonPause.grid(padx=10, column=1, row=1, sticky='EW')
-        buttonPlay = tk.Button(self, text='Play', command=self.playPlaying)
+
+        play_image = tk.PhotoImage(file='images/play.gif')
+        buttonPlay = tk.Button(self, width=128, height=128, image=play_image, command=self.playPlaying)
+        buttonPlay.image = play_image
         buttonPlay.grid(padx=10, column=2, row=1, sticky='EW')
         buttonNext = tk.Button(self, text='Next', command=self.nextPlaying)
         buttonNext.grid(padx=10, column=3, row=1, sticky='EW')
