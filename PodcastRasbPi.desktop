@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Podcast RasbPi
+Comment=Podcast reader for the Raspberry Pi
+Icon=/home/pi/Documenty/projects/podcastRasbPi/images/podcast.xpm
+Exec=/home/pi/Documenty/projects/podcastRasbPi/podcastRasbPi.py
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=None;
