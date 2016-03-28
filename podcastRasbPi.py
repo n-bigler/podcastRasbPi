@@ -22,40 +22,50 @@ class PodcastRabPi(tk.Tk):
         self.manager = PodcastsManager()
     
     def initialize(self):
-        self.geometry('480x320')
+        self.geometry('480x320+0+0')
         # make it cover the entire screen
         #w, h = self.winfo_screenwidth(), self.winfo_screenheight()
         #self.overrideredirect(1)
         #self.geometry("%dx%d+0+0" % (w, h))
-        self.grid()
+        #self.grid()
+
+        frame_podcasts = tk.Frame(self)
         
 
-        buttonForum = tk.Button(self,height=5, text="Forum", font=('Arial', 14, 'bold'),  command=self.loadForum)
-        buttonForum.grid(padx=10, column=0, row=0, sticky='EW')
+        buttonForum = tk.Button(frame_podcasts, text="Forum", font=('Arial', 14, 'bold'),  command=self.loadForum)
+        buttonForum.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=5)
 
-        buttonJournal = tk.Button(self, height=5, text='Le Journal', font=('Arial', 14, 'bold'), command=self.loadJournal)
-        buttonJournal.grid(padx=10, column=1, row=0, sticky='EW')
+        buttonJournal = tk.Button(frame_podcasts, text='Le Journal', font=('Arial', 14, 'bold'), command=self.loadJournal)
+        buttonJournal.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=5)
 
-        buttonLibrairie = tk.Button(self, height=5, text="La Librairie\nFrancophone", font=('Arial', 14, 'bold'), command=self.loadLibrairie)
-        buttonLibrairie.grid(padx=10, column=2, row=0, sticky='EW')
+        buttonLibrairie = tk.Button(frame_podcasts, text="La Librairie\nFrancophone", font=('Arial', 14, 'bold'), command=self.loadLibrairie)
+        buttonLibrairie.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=5)
+
+        frame_podcasts.pack(side=tk.TOP, fill=tk.BOTH, expand=1, pady=5)
+
+        frame_button = tk.Frame(self)
 
         stop_image = tk.PhotoImage(file='images/stop.gif')
-        buttonStop = tk.Button(self, width=128, height=128, image=stop_image, command=self.stopPlaying)
+        buttonStop = tk.Button(frame_button, height=120, image=stop_image, command=self.stopPlaying)
         buttonStop.image = stop_image
-        buttonStop.grid(padx=10, column=0, row=1, sticky='EW')
+        buttonStop.pack(fill=tk.BOTH, expand=1, side=tk.LEFT, padx=5)
 
         pause_image = tk.PhotoImage(file='images/pause.gif')
-        buttonPause = tk.Button(self, width=128, height=128, image=pause_image, command=self.pausePlaying)
+        buttonPause = tk.Button(frame_button, height=120,  image=pause_image, command=self.pausePlaying)
         buttonPause.image = pause_image
-        buttonPause.grid(padx=10, column=1, row=1, sticky='EW')
+        buttonPause.pack(fill=tk.BOTH, expand=1, side=tk.LEFT, padx=5)
 
         play_image = tk.PhotoImage(file='images/play.gif')
-        buttonPlay = tk.Button(self, width=128, height=128, image=play_image, command=self.playPlaying)
+        buttonPlay = tk.Button(frame_button, height=120,  image=play_image, command=self.playPlaying)
         buttonPlay.image = play_image
-        buttonPlay.grid(padx=10, column=2, row=1, sticky='EW')
-        buttonNext = tk.Button(self, text='Next', command=self.nextPlaying)
-        buttonNext.grid(padx=10, column=3, row=1, sticky='EW')
+        buttonPlay.pack(fill=tk.BOTH, expand=1, side=tk.LEFT,padx=5)
 
+        next_image = tk.PhotoImage(file='images/next.gif')
+        buttonNext = tk.Button(frame_button, height=120,  image=next_image, command=self.nextPlaying)
+        buttonNext.image = next_image
+        buttonNext.pack(fill=tk.BOTH, expand=1, side=tk.LEFT, padx=5)
+
+        frame_button.pack(side=tk.TOP, fill=tk.BOTH, expand=1, pady=5)
 
     def loadForum(self):
         self.loadMedia('forum')
