@@ -22,23 +22,21 @@ class PodcastRabPi(tk.Tk):
         self.manager = PodcastsManager()
     
     def initialize(self):
-        self.geometry('800x600')
+        self.geometry('480x320')
+        # make it cover the entire screen
+        #w, h = self.winfo_screenwidth(), self.winfo_screenheight()
+        #self.overrideredirect(1)
+        #self.geometry("%dx%d+0+0" % (w, h))
         self.grid()
         
 
-        forum_image = tk.PhotoImage(file='images/forum.gif')
-        buttonForum = tk.Button(self,width=128, height=128, image=forum_image,  command=self.loadForum)
-        buttonForum.image = forum_image
+        buttonForum = tk.Button(self,height=5, text="Forum", font=('Arial', 14, 'bold'),  command=self.loadForum)
         buttonForum.grid(padx=10, column=0, row=0, sticky='EW')
 
-        journal_image = tk.PhotoImage(file='images/journal.gif')
-        buttonJournal = tk.Button(self,width=128, height=128, image=journal_image, command=self.loadJournal)
-        buttonJournal.image = journal_image
+        buttonJournal = tk.Button(self, height=5, text='Le Journal', font=('Arial', 14, 'bold'), command=self.loadJournal)
         buttonJournal.grid(padx=10, column=1, row=0, sticky='EW')
 
-        librairie_image = tk.PhotoImage(file='images/librairie.gif')
-        buttonLibrairie = tk.Button(self, width=128, height=128, image=librairie_image, command=self.loadLibrairie)
-        buttonLibrairie.image = librairie_image
+        buttonLibrairie = tk.Button(self, height=5, text="La Librairie\nFrancophone", font=('Arial', 14, 'bold'), command=self.loadLibrairie)
         buttonLibrairie.grid(padx=10, column=2, row=0, sticky='EW')
 
         stop_image = tk.PhotoImage(file='images/stop.gif')
