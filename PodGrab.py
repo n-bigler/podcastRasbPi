@@ -208,7 +208,7 @@ def main(argv):
             print "Updating all podcast subscriptions..."
             subs = get_subscriptions(cursor, connection)
             for sub in subs:
-                feed_name = sub[0]
+                feed_name = sub[0].encode('ascii', 'replace')
                 feed_url = sub[1]
                 print "Feed for subscription: '" + feed_name + "' from '" + feed_url + "' is updating..."
                 data = open_datasource(feed_url)
@@ -332,13 +332,14 @@ def iterate_feed(data, mode, download_dir, today, cur, conn, feed):
         xml_data = xml.dom.minidom.parseString(data)
         for channel in xml_data.getElementsByTagName('channel'):
             channel_title = channel.getElementsByTagName('title')[0].firstChild.data
+            channel_title = clean_string(channel_title)
+            channel_title = channel_title.encode('ascii', 'replace')
+
             channel_link = channel.getElementsByTagName('link')[0].firstChild.data
             print "Channel Title: ===" + channel_title + "==="
             print "Channel Link: " + channel_link
             
-            channel_title = clean_string(channel_title)
-            channel_title = channel_title.encode('ascii', 'replace')
-
+            
             channel_directory = download_dir + os.sep + channel_title
             if not os.path.exists(channel_directory):
                 os.makedirs(channel_directory)
