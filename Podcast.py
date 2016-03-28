@@ -29,8 +29,9 @@ class Podcast(Media):
         del self.to_play[:]
         #--- for forum ---
         #get all files
+        pdb.set_trace()
         for item in files_sorted:
-            if item[0:10] == last_date and item[25] != "f": #"f" is for full, which is to full 1h mp3
+            if item[0:10] == last_date and item[25:29] != "full": #"f" is for full, which is to full 1h mp3
                 self.to_play.append(self.dir + os.sep + item)
 
 

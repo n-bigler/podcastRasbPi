@@ -24,7 +24,7 @@ class PodcastsManager:
         self.titles['forum'] = 0
         self.media.append(Podcast("Le journal horaire",  DOWNLOAD_DIRECTORY + os.sep + 'LeJournalhoraire-La1?re'))
         self.titles['journal'] = 1
-        self.media.append(Podcast("La librairie francophone",  DOWNLOAD_DIRECTORY + os.sep + 'LaLibrairiefrancophone-La1\?re'))
+        self.media.append(Podcast("La librairie francophone",  DOWNLOAD_DIRECTORY + os.sep + 'Lalibrairiefrancophone-La1?re'))
         self.titles['librairie'] = 2
 
         self.vlcInstance = vlc.Instance()
