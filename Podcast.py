@@ -39,7 +39,6 @@ class Podcast(Media):
         self.to_play = sorted(self.to_play, key=self.findPosition)
 
         playlist = Instance.media_list_new(self.to_play)
-        media = Instance.media_new(self.dir + os.sep + self.to_play[0])
 
         Player.set_media_list(playlist)
         return 0
