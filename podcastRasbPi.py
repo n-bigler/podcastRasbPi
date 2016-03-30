@@ -41,6 +41,11 @@ class PodcastRabPi(tk.Tk):
         buttonLibrairie = tk.Button(frame_podcasts, text="La Librairie\nFrancophone", font=('Arial', 14, 'bold'), command=self.loadLibrairie)
         buttonLibrairie.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=5)
 
+        buttonLa1ereLive = tk.Button(frame_podcasts, text="La 1ère\nlive", font=('Arial', 14, 'bold'), command=self.loadLa1ereLive)
+        buttonLa1ereLive.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=5)
+
+
+
         frame_podcasts.pack(side=tk.TOP, fill=tk.BOTH, expand=1, pady=5)
 
         frame_button = tk.Frame(self)
@@ -75,6 +80,9 @@ class PodcastRabPi(tk.Tk):
 
     def loadLibrairie(self):
         self.loadMedia('librairie')
+
+    def loadLa1ereLive(self):
+        self.loadMedia('la1erelive')
     
     def loadMedia(self, name):
         #play forum
