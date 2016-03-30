@@ -28,7 +28,7 @@ class LiveStream(Media):
         # p.set_mrl('http://stream.srg-ssr.ch/m/la-1ere/mp3_128')
         # p.play()                
 
-        return 0
+        return self.url.split('/')[-1]
 
       
     def play(self):

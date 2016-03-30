@@ -71,6 +71,10 @@ class PodcastRabPi(tk.Tk):
         buttonNext.pack(fill=tk.BOTH, expand=1, side=tk.LEFT, padx=5)
 
         frame_button.pack(side=tk.TOP, fill=tk.BOTH, expand=1, pady=5)
+        
+        self.status_text = tk.StringVar()
+        status_bar = tk.Label(self, bd=1, relief=tk.SUNKEN, anchor=tk.W, textvariable=self.status_text, font=('Arial', 12, 'normal'))
+        status_bar.pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 
     def loadForum(self):
         self.loadMedia('forum')
@@ -87,19 +91,19 @@ class PodcastRabPi(tk.Tk):
     def loadMedia(self, name):
         #play forum
         self.manager.load(name)
-        self.manager.play()
+        self.playPlaying()
         
     def stopPlaying(self):
-        self.manager.stop()
+        self.manager.stop(self.status_text)
         
     def pausePlaying(self):
-        self.manager.pause()
+        self.manager.pause(self.status_text)
             
     def playPlaying(self):
-        self.manager.play()
+        self.manager.play(self.status_text)
 
     def nextPlaying(self):
-        self.manager.next()
+        self.manager.next(self.status_text)
 
 
 if __name__ == "__main__":
