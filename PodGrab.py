@@ -449,9 +449,9 @@ def write_podcast(item, channel_title, date, type):
             print "Podcast: ", item, " downloaded to: ", local_file
             
             # 2011-11-06 Append to m3u file
-            output = open(current_directory + os.sep + m3u_file, 'a')
-            output.write(DOWNLOAD_DIRECTORY + os.sep + channel_title + os.sep + item_file_name + "\n")
-            output.close()
+            # output = open(current_directory + os.sep + m3u_file, 'a')
+            # output.write(DOWNLOAD_DIRECTORY + os.sep + channel_title + os.sep + item_file_name + "\n")
+            # output.close()
             return 'Successful Write'
         except urllib2.URLError as e:
             print "ERROR - Could not write item to file: ", e
