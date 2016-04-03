@@ -566,6 +566,7 @@ def iterate_channel(chan, today, mode, cur, conn, feed, channel_title):
     for item in chan.getElementsByTagName('item'):
         try:
             item_title = item.getElementsByTagName('title')[0].firstChild.data
+            item_title = item_title.encode('ascii', 'replace')
             item_date = item.getElementsByTagName('pubDate')[0].firstChild.data
             item_file = item.getElementsByTagName('enclosure')[0].getAttribute('url')
             item_size = item.getElementsByTagName('enclosure')[0].getAttribute('length')
@@ -593,7 +594,6 @@ def iterate_channel(chan, today, mode, cur, conn, feed, channel_title):
             if not has_error:
                 if mktime(struct_time_item) > mktime(struct_last_ep) or mode == MODE_DOWNLOAD:
                     saved = write_podcast(item_file, channel_title, item_date, item_type)
-                    
                     if saved == 'File Exists':
                         print "File Existed - updating local database's Last Episode";
                         update_subscription(cur, conn, feed, fix_date(item_date))
