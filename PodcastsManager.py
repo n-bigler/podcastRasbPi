@@ -18,7 +18,7 @@ LIVE_DIRECTORY = 'live'
 class PodcastsManager:
     
     def __init__(self):
-        current_directory = '/home/nico/Documents/projects/workingFiles/podcastRasbPi'
+        current_directory = '/home/pi/Documents/projects/podcastRasbPi'
         self.download_directory = current_directory + os.sep + DOWNLOAD_DIRECTORY
         self.titles = {}
         self.media = list()
