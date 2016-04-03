@@ -36,21 +36,37 @@ class PodcastsManager:
 
         self.vlcInstance = vlc.Instance()
         self.player = self.vlcInstance.media_list_player_new()
+        self.currently_playing = ""
+        self.listener_list = []
 
         
     def load(self, media_name):
         ind_title = self.titles[media_name]
-        self.media[ind_title].load(self.vlcInstance, self.player)
+        self.currently_playing = self.media[ind_title].load(self.vlcInstance, self.player)
+        
 
-    def play(self):
+    def play(self, text):
         self.player.play()
+        self.broadcastEvent("Playing: " + self.currently_playing)
 
-    def pause(self):
+
+    def pause(self, text):
         self.player.pause()
+        self.broadcastEvent("Pause: " + self.currently_playing)
 
-    def stop(self):
+    def stop(self, text):
         self.player.stop()
+        self.broadcastEvent("Stop")
         #self.player.release()
 
-    def next(self):
+    def next(self, text):
         self.player.next()
+
+    def addListener(self, new_listener):
+        self.listener_list.append(new_listener)
+
+    def broadcastEvent(self, event):
+        for li in self.listener_list:
+            li.listen(event)
+
+        

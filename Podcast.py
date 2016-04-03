@@ -41,7 +41,7 @@ class Podcast(Media):
         playlist = Instance.media_list_new(self.to_play)
 
         Player.set_media_list(playlist)
-        return 0
+        return self.to_play[0].split('/')[-1]
 
     def findPosition(self,item):
         name = item.split(os.sep)[-1]
