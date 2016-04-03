@@ -18,20 +18,20 @@ LIVE_DIRECTORY = 'live'
 class PodcastsManager:
     
     def __init__(self):
-        current_directory = '/home/nico/Documents/projects/workingFiles/podcastRasbPi'
-        self.download_directory = current_directory + os.sep + DOWNLOAD_DIRECTORY
+        current_directory = os.getcwd()
+        self.podcast_directory = current_directory + os.sep + DOWNLOAD_DIRECTORY
+        self.live_directory = current_directory + os.sep + LIVE_DIRECTORY
         self.titles = {}
         self.media = list()
-        self.media.append(Podcast("Forum", DOWNLOAD_DIRECTORY + os.sep + 'Forum-La1?re'))
+        self.media.append(Podcast("Forum", self.podcast_directory + os.sep + 'Forum-La1?re'))
         self.titles['forum'] = 0
-        self.media.append(Podcast("Le journal horaire",  DOWNLOAD_DIRECTORY + os.sep + 'LeJournalhoraire-La1?re'))
+        self.media.append(Podcast("Le journal horaire", self.podcast_directory + os.sep + 'LeJournalhoraire-La1?re'))
         self.titles['journal'] = 1
-        self.media.append(Podcast("La librairie francophone",  DOWNLOAD_DIRECTORY + os.sep + 'Lalibrairiefrancophone-La1?re'))
+        self.media.append(Podcast("La librairie francophone",  self.podcast_directory + os.sep + 'Lalibrairiefrancophone-La1?re'))
         self.titles['librairie'] = 2
 
-        self.media.append(LiveStream("La 1ère - Live",   current_directory + os.sep + LIVE_DIRECTORY + os.sep + "mp3_128.m3u"))
+        self.media.append(LiveStream("La 1ère - Live",   self.live_directory + os.sep + "mp3_128.m3u"))
         self.titles['la1erelive'] = 3
-
 
         self.vlcInstance = vlc.Instance()
         self.player = self.vlcInstance.media_list_player_new()
