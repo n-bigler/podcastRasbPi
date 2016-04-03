@@ -12,14 +12,16 @@ Created on Sat Mar 19 19:29:09 2016
 import Tkinter as tk
 import pdb
 from PodcastsManager import PodcastsManager
+from StatusBar import StatusBar
 
 class PodcastRabPi(tk.Tk):
 
     def __init__(self, root):
         tk.Tk.__init__(self, root)
         self.root = root
-        self.initialize()
         self.manager = PodcastsManager()
+        self.initialize()
+
     
     def initialize(self):
         self.geometry('480x320+0+0')
@@ -43,7 +45,6 @@ class PodcastRabPi(tk.Tk):
 
         buttonLa1ereLive = tk.Button(frame_podcasts, text="La 1ère\nlive", font=('Arial', 14, 'bold'), command=self.loadLa1ereLive)
         buttonLa1ereLive.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=5)
-
 
 
         frame_podcasts.pack(side=tk.TOP, fill=tk.BOTH, expand=1, pady=5)
@@ -71,6 +72,12 @@ class PodcastRabPi(tk.Tk):
         buttonNext.pack(fill=tk.BOTH, expand=1, side=tk.LEFT, padx=5)
 
         frame_button.pack(side=tk.TOP, fill=tk.BOTH, expand=1, pady=5)
+        
+        self.status_text = tk.StringVar()
+        status_bar = tk.Label(self, bd=1, relief=tk.SUNKEN, anchor=tk.W, textvariable=self.status_text, font=('Arial', 12, 'normal'))
+        status_bar.pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+        self.status_bar_controler = StatusBar(self.status_text)
+        self.manager.addListener(self.status_bar_controler)
 
     def loadForum(self):
         self.loadMedia('forum')
@@ -87,19 +94,19 @@ class PodcastRabPi(tk.Tk):
     def loadMedia(self, name):
         #play forum
         self.manager.load(name)
-        self.manager.play()
+        self.playPlaying()
         
     def stopPlaying(self):
-        self.manager.stop()
+        self.manager.stop(self.status_text)
         
     def pausePlaying(self):
-        self.manager.pause()
+        self.manager.pause(self.status_text)
             
     def playPlaying(self):
-        self.manager.play()
+        self.manager.play(self.status_text)
 
     def nextPlaying(self):
-        self.manager.next()
+        self.manager.next(self.status_text)
 
 
 if __name__ == "__main__":
