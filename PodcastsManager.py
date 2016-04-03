@@ -21,6 +21,7 @@ class PodcastsManager:
         current_directory = os.getcwd()
         self.podcast_directory = current_directory + os.sep + DOWNLOAD_DIRECTORY
         self.live_directory = current_directory + os.sep + LIVE_DIRECTORY
+
         self.titles = {}
         self.media = list()
         self.media.append(Podcast("Forum", self.podcast_directory + os.sep + 'Forum-La1?re'))
