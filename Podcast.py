@@ -25,18 +25,24 @@ class Podcast(Media):
         #get list of files in folder
         files = os.listdir(self.dir);
         files_sorted = sorted(files, reverse=True)
-        last_date = files_sorted[0][0:10]
-        del self.to_play[:]
+        last_date = files_sorted[0][0:11]
+
         #--- for forum ---
         #get all files
+        if files_sorted[0][12:17] == 'forum':
+            
+            for item in files_sorted:
+                if item[0:11] == last_date and item.split('_')[2] != "full": #"f" is for full, which is to full 1h mp3
+                    self.to_play.append(self.dir + os.sep + item)
 
-        for item in files_sorted:
-            if item[0:10] == last_date and item[25:29] != "full": #"f" is for full, which is to full 1h mp3
-                self.to_play.append(self.dir + os.sep + item)
+            #put the files in order
+            self.to_play = sorted(self.to_play, key=self.findPosition)
+        else:
+            self.to_play[:] = files_sorted
 
 
-        #put the files in order
-        self.to_play = sorted(self.to_play, key=self.findPosition)
+        for item in self.to_play:
+            print(item)
 
         playlist = Instance.media_list_new(self.to_play)
 
@@ -45,8 +51,9 @@ class Podcast(Media):
 
     def findPosition(self,item):
         name = item.split(os.sep)[-1]
-        position = name.split('-', 1)[1][0]
-        return position
+        print(name)
+        position = name.split('_', 4)[3].split('-')[1]
+        return int(position)
 
         
       
