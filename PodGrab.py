@@ -34,6 +34,7 @@ from email.mime.text import MIMEText
 import platform
 import traceback
 import unicodedata
+import pdb
 
 
 MODE_NONE = 70
@@ -380,7 +381,7 @@ def clean_string(str):
         new_string = new_string.rstrip("-")
     new_string_final = ''
     for c in new_string:
-        if c.isalnum() or c == "-" or c == "." or c.isspace():
+        if c.isalnum() or c == "-" or c == "." or c.isspace() or c == "_":
             new_string_final = new_string_final + ''.join(c)
             new_string_final = new_string_final.strip()
             new_string_final = new_string_final.replace(' ','-')
