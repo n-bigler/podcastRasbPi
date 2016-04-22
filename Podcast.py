@@ -33,7 +33,7 @@ class Podcast(Media):
             
             for item in files_sorted:
                 if item[0:11] == last_date and item.split('_')[2] != "full": #"f" is for full, which is to full 1h mp3
-                    self.to_play.append(self.dir + os.sep + item)
+                    self.to_play.append(item)
 
             #put the files in order
             self.to_play = sorted(self.to_play, key=self.findPosition)
@@ -44,7 +44,7 @@ class Podcast(Media):
         for item in self.to_play:
             print(item)
 
-        playlist = Instance.media_list_new(self.to_play)
+        playlist = Instance.media_list_new(self.dir + os.sep + self.to_play)
 
         Player.set_media_list(playlist)
         return self.to_play[0].split('/')[-1]
