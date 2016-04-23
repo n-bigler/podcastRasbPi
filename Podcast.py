@@ -43,7 +43,6 @@ class Podcast(Media):
             
         self.to_play_fullpath = [];
         for item in self.to_play:
-            print(item)
             self.to_play_fullpath.append(self.dir + os.sep + item)
             
 
