@@ -47,6 +47,7 @@ class Podcast(Media):
             self.to_play_fullpath.append(self.dir + os.sep + item)
             
 
+
         playlist = Instance.media_list_new(self.to_play_fullpath)
 
         Player.set_media_list(playlist)
