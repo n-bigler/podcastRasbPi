@@ -25,14 +25,14 @@ class Podcast(Media):
         #get list of files in folder
         files = os.listdir(self.dir);
         files_sorted = sorted(files, reverse=True)
-        last_date = files_sorted[0][0:11]
+        last_date = files_sorted[0][0:8]
 
         #--- for forum ---
         #get all files
         if files_sorted[0][12:17] == 'forum':
             
             for item in files_sorted:
-                if item[0:11] == last_date and item.split('_')[2] != "full": #"f" is for full, which is to full 1h mp3
+                if item[0:8] == last_date and item.split('_')[2] != "full": #"f" is for full, which is to full 1h mp3
                     self.to_play.append(item)
 
             #put the files in order
