@@ -9,6 +9,7 @@ from Media import Media
 import vlc
 import os
 import pdb
+import logging
 
 
 
@@ -17,6 +18,7 @@ class Podcast(Media):
         self.name = name
         self.dir = directory.rstrip('/');
         self.to_play = list()
+
         
         
 
@@ -26,6 +28,7 @@ class Podcast(Media):
         files = os.listdir(self.dir);
         files_sorted = sorted(files, reverse=True)
         last_date = files_sorted[0][0:8]
+        self.to_play = [];
 
         #--- for forum ---
         #get all files
@@ -44,8 +47,8 @@ class Podcast(Media):
         self.to_play_fullpath = [];
         for item in self.to_play:
             self.to_play_fullpath.append(self.dir + os.sep + item)
+            logging.debug(self.dir + os.sep + item)
             
-
 
         playlist = Instance.media_list_new(self.to_play_fullpath)
 
@@ -54,7 +57,6 @@ class Podcast(Media):
 
     def findPosition(self,item):
         name = item.split(os.sep)[-1]
-        print(name)
         position = name.split('_', 4)[3].split('-')[1]
         return int(position)
 

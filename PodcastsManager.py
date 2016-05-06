@@ -11,6 +11,7 @@ from Podcast import Podcast
 from LiveStream import LiveStream
 import pdb
 
+
 DOWNLOAD_DIRECTORY = 'podcasts'
 LIVE_DIRECTORY = 'live'
 
@@ -18,6 +19,7 @@ LIVE_DIRECTORY = 'live'
 class PodcastsManager:
     
     def __init__(self):
+
         current_directory = os.getcwd()
         self.podcast_directory = current_directory + os.sep + DOWNLOAD_DIRECTORY
         self.live_directory = current_directory + os.sep + LIVE_DIRECTORY
