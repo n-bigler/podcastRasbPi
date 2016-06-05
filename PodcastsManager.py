@@ -36,6 +36,10 @@ class PodcastsManager:
         self.media.append(LiveStream("La 1ère - Live",   self.live_directory + os.sep + "mp3_128.m3u"))
         self.titles['la1erelive'] = 3
 
+        self.media.append(Podcast("Histoire vivante",   self.podcast_directory + os.sep + "Histoirevivante-RTS"))
+        self.titles['histoirevivante'] = 4
+
+
         self.vlcInstance = vlc.Instance()
         self.player = self.vlcInstance.media_list_player_new()
         self.currently_playing = ""

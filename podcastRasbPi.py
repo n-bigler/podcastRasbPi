@@ -34,20 +34,23 @@ class PodcastRabPi(tk.Tk):
         frame_podcasts = tk.Frame(self)
         
 
-        buttonForum = tk.Button(frame_podcasts, text="Forum", font=('Arial', 14, 'bold'),  command=self.loadForum)
-        buttonForum.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=5)
+        buttonForum = tk.Button(frame_podcasts, text="Forum", font=('Arial', 12, 'bold'),  command=self.loadForum)
+        buttonForum.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=1)
 
-        buttonJournal = tk.Button(frame_podcasts, text='Le Journal', font=('Arial', 14, 'bold'), command=self.loadJournal)
-        buttonJournal.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=5)
+        buttonJournal = tk.Button(frame_podcasts, text='Le\nJournal', font=('Arial', 12, 'bold'), command=self.loadJournal)
+        buttonJournal.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=1)
 
-        buttonLibrairie = tk.Button(frame_podcasts, text="La Librairie\nFrancophone", font=('Arial', 14, 'bold'), command=self.loadLibrairie)
-        buttonLibrairie.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=5)
+        buttonLibrairie = tk.Button(frame_podcasts, text="La Librairie\nFrancophone", font=('Arial', 12, 'bold'), command=self.loadLibrairie)
+        buttonLibrairie.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=1)
 
-        buttonLa1ereLive = tk.Button(frame_podcasts, text="La 1ère\nlive", font=('Arial', 14, 'bold'), command=self.loadLa1ereLive)
-        buttonLa1ereLive.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=5)
+        buttonHistoire = tk.Button(frame_podcasts, text="Histoire\nVivante", font=('Arial', 12, 'bold'), command=self.loadHistoire)
+        buttonHistoire.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=1)
+
+        buttonLa1ereLive = tk.Button(frame_podcasts, text="La 1ère\nlive", font=('Arial', 12, 'bold'), command=self.loadLa1ereLive)
+        buttonLa1ereLive.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, padx=1)
 
 
-        frame_podcasts.pack(side=tk.TOP, fill=tk.BOTH, expand=1, pady=5)
+        frame_podcasts.pack(side=tk.TOP, fill=tk.BOTH, expand=1, pady=1)
 
         frame_button = tk.Frame(self)
 
@@ -90,9 +93,11 @@ class PodcastRabPi(tk.Tk):
 
     def loadLa1ereLive(self):
         self.loadMedia('la1erelive')
+
+    def loadHistoire(self):
+        self.loadMedia('histoirevivante')
     
     def loadMedia(self, name):
-        #play forum
         self.manager.load(name)
         self.playPlaying()
         

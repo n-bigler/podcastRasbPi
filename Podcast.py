@@ -57,8 +57,11 @@ class Podcast(Media):
 
     def findPosition(self,item):
         name = item.split(os.sep)[-1]
-        position = name.split('_', 4)[3].split('-')[1]
-        return int(position)
+        position = name.split('_', 4)
+        if position[3] == 'mfp':
+            return 10
+        
+        return int(position[3].split('-')[1])
 
         
       
