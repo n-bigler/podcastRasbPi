@@ -35,7 +35,7 @@ class Podcast(Media):
         if files_sorted[0][12:17] == 'forum':
             
             for item in files_sorted:
-                if item[0:8] == last_date and item.split('_')[2] != "full" and item.split('_')[3] != 'rfp': #"f" is for full, which is to full 1h mp3
+                if item[0:8] == last_date and item.split('_')[2] != "full" and item.split('_')[3] != 'mfp' and item.split('_')[3] != 'la-grande-interview-du-dimanche': #"f" is for full, which is to full 1h mp3
                     self.to_play.append(item)
 
             #put the files in order
