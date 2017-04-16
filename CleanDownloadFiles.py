@@ -4,11 +4,11 @@
 import os
 import pdb
 
-current_directory = os.getcwd()
+current_directory = '/home/pi/Documents/projects/podcastRasbPi'
 dir_to_clean = ['Forum-La1?re', 'LeJournalhoraire-La1?re', 'Lalibrairiefrancophone-La1?re']
 
 for item in dir_to_clean:
-    dir_curr = current_directory + os.sep + item
+    dir_curr = current_directory + os.sep + 'podcasts' + os.sep + item
     files = os.listdir(dir_curr)
     files = sorted(files)
     print "In " + item + " deleted:"
