@@ -631,9 +631,9 @@ def iterate_channel(chan, today, mode, cur, conn, feed, channel_title):
 def fix_date(date):
     new_date = ""
     split_array = date.split(' ')
-    for i in range(0,5):
+    for i in range(0,6):
         new_date = new_date + split_array[i] + " "
-    return new_date.rstrip()
+    return new_date.rstrip().lstrip(" ")
 
 
 def does_sub_exist(cur, conn, feed):

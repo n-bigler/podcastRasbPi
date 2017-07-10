@@ -5,7 +5,8 @@ import os
 import pdb
 
 current_directory = '/home/pi/Documents/projects/podcastRasbPi'
-dir_to_clean = ['Forum-La1?re', 'LeJournalhoraire-La1?re', 'Lalibrairiefrancophone-La1?re']
+dir_to_clean = ['Forum-La1ere', 'LeJournalhoraire-RTS', 'Lalibrairiefrancophone-La1ere',
+        'Histoirevivante-RTS']
 
 for item in dir_to_clean:
     dir_curr = current_directory + os.sep + 'podcasts' + os.sep + item

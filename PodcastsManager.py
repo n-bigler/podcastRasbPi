@@ -26,11 +26,11 @@ class PodcastsManager:
 
         self.titles = {}
         self.media = list()
-        self.media.append(Podcast("Forum", self.podcast_directory + os.sep + 'Forum-La1?re'))
+        self.media.append(Podcast("Forum", self.podcast_directory + os.sep + 'Forum-La1ere'))
         self.titles['forum'] = 0
-        self.media.append(Podcast("Le journal horaire", self.podcast_directory + os.sep + 'LeJournalhoraire-La1?re'))
+        self.media.append(Podcast("Le journal horaire", self.podcast_directory + os.sep + 'LeJournalhoraire-RTS'))
         self.titles['journal'] = 1
-        self.media.append(Podcast("La librairie francophone",  self.podcast_directory + os.sep + 'Lalibrairiefrancophone-La1?re'))
+        self.media.append(Podcast("La librairie francophone",  self.podcast_directory + os.sep + 'Lalibrairiefrancophone-La1ere'))
         self.titles['librairie'] = 2
 
         self.media.append(LiveStream("La 1ère - Live",   self.live_directory + os.sep + "mp3_128.m3u"))
