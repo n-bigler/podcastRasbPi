@@ -64,6 +64,8 @@ class Podcast(Media):
             return 10
         elif position[3] == 'debat':
             return 10
+        elif position[3] == 'forum-des-medias':
+            return 10
  
         return int(position[3].split('-')[1])
 
